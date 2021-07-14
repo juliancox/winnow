@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "standard && tape 'test/**/*.js' | tap-spec",
+    "test1": "standard && tape 'test/unit/normalize-query-options/geometry-filter.spec.js' | tap-spec",
     "fix": "standard --fix",
     "benchmark": "node benchmark/index.js",
     "benchmark:ci": "node benchmark/index.js | tee benchmark-result.txt"
@@ -41,7 +42,6 @@
   "dependencies": {
     "@esri/proj-codes": "^2.6.0",
     "@hapi/joi": "^17.1.1",
-    "@terraformer/arcgis": "^2.0.7",
     "@terraformer/spatial": "^2.0.7",
     "@turf/bbox-polygon": "^6.0.1",
     "@turf/centroid": "^6.0.0",
@@ -55,6 +55,7 @@
     "proj4": "^2.6.2",
     "simple-statistics": "^7.0.0",
     "string-hash": "^1.1.3",
+    "terraformer-arcgis-parser": "^1.1.0",
     "wkt-parser": "^1.2.2"
   },
   "devDependencies": {

@@ -195,7 +195,8 @@ test('normalize-query-options, geometry-filter: geometry as Esri envelope', t =>
       ]
     }
   })
-  t.deepEquals(geometryFilter, {
+  const comp = { type: geometryFilter.type, coordinates: geometryFilter.coordinates }
+  t.deepEquals(comp, {
     type: 'Polygon',
     coordinates: [
       [
