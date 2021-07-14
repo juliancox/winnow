@@ -1,6 +1,6 @@
 {
   "name": "winnow",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "Apply sql-like filters to GeoJSON",
   "main": "index.js",
   "directories": {
@@ -8,7 +8,6 @@
   },
   "scripts": {
     "test": "standard && tape 'test/**/*.js' | tap-spec",
-    "test1": "standard && tape 'test/unit/normalize-query-options/geometry-filter.spec.js' | tap-spec",
     "fix": "standard --fix",
     "benchmark": "node benchmark/index.js",
     "benchmark:ci": "node benchmark/index.js | tee benchmark-result.txt"
