@@ -195,8 +195,9 @@ test('normalize-query-options, geometry-filter: geometry as Esri envelope', t =>
       ]
     }
   })
-  const comp = { type: geometryFilter.type, coordinates: geometryFilter.coordinates }
-  t.deepEquals(comp, {
+  console.log(JSON.stringify(geometryFilter))
+  const actual = { type: geometryFilter.type, coordinates: geometryFilter.coordinates } // see comments below
+  const expected = {
     type: 'Polygon',
     coordinates: [
       [
@@ -212,5 +213,30 @@ test('normalize-query-options, geometry-filter: geometry as Esri envelope', t =>
         [-119.8620384708507, 39.545907591418406]
       ]
     ]
-  })
+  }
+  t.deepEquals(actual, expected)
+  /*
+  // geometryFilter now includes bbox attribute however for some reason I can't figure out deepEquals seems to drop bbox in output (on fail)
+  // but still considers them different. If we add in bbox to expected...
+  const xpected = {
+    type: 'Polygon',
+    coordinates: [
+      [
+        [-119.8620384708507, 39.545907591418406],
+        [-119.86209313222116, 39.545931275663776],
+        [-119.86214507417176, 39.54585942783442],
+        [-119.86215200336552, 39.54584984610082],
+        [-119.86213343971804, 39.545841804116996],
+        [-119.86216807184147, 39.54579390280642],
+        [-119.86210620156871, 39.5457670939942],
+        [-119.86201962858273, 39.545886843071926],
+        [-119.86204539539456, 39.54589800884157],
+        [-119.8620384708507, 39.545907591418406]
+      ]
+    ],
+    bbox: [-119.86216807184147, 39.5457670939942, -119.86201962858273, 39.545931275663776]
+  }
+  console.log(JSON.stringify(geometryFilter) === JSON.stringify(xpected)) // shows true - geometryFilter and xpected essentially equivalent with bbox added
+  t.deepEquals(geometryFilter, xpected) // returns fail with no bbox reported in output for either
+  */
 })
